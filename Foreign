@@ -1,0 +1,179 @@
+if game.PlaceId == 7662598522 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Foreign Gui", "DarkTheme")
+    -- MAIN
+
+
+    -- PLAYER
+    local Player = Window:NewTab("Player")
+    local PlayerSection = Player:NewSection("Player")
+
+    local Combat = Window:NewTab("Combat")
+    local Waypoints = Window:NewTab("Waypoints")
+    local AutoBuy = Window:NewTab("AutoBuy")
+    local Other = Window:NewTab("Other")
+    local Credits = Window:NewTab("Credits")
+    local AutoBuyGuns = AutoBuy:NewSection("Guns:")
+    local AutoBuyFood = AutoBuy:NewSection("Food:")
+    local AutoBuyOther = AutoBuy:NewSection("Other:")
+    
+    local CreditsSection = Credits:NewSection("Credits To")
+    CreditsSection:NewLabel("$Y: GUI Scripting / Owner")
+    CreditsSection:NewLabel("Amy: Moral Support / Bestfriend")
+    
+    AutoBuyGuns:NewButton("[Revolver] - ", "ButtonInfo", function()
+    end)
+    AutoBuyOther:NewButton("[Bat] - ", "ButtonInfo", function()
+    end)
+    AutoBuyOther:NewButton("[Hammer] - ", "ButtonInfo", function()
+    end)
+    AutoBuyOther:NewButton("[Pencil] - ", "ButtonInfo", function()
+    end)
+    AutoBuyOther:NewButton("[Grenade] - ", "ButtonInfo", function()
+    end)
+    AutoBuyOther:NewButton("[Armor] - ", "ButtonInfo", function()
+    end)
+    AutoBuyOther:NewButton("[Heavy Armor] - ", "ButtonInfo", function()
+    end)
+    AutoBuyOther:NewButton("[Mask] - ", "ButtonInfo", function()
+    end)
+    AutoBuyOther:NewButton("[Flash Bang] - ", "ButtonInfo", function()
+    end)
+    AutoBuyGuns:NewButton("[Revolver Ammo] - ", "ButtonInfo", function()
+    end)
+
+    AutoBuyGuns:NewButton("[Double Barrel] - ", "ButtonInfo", function()
+    end)
+    AutoBuyGuns:NewButton("[Double Barrel Ammo] - ", "ButtonInfo", function()
+    end)
+
+    AutoBuyGuns:NewButton("[Glock] - ", "ButtonInfo", function()
+    end)
+    AutoBuyGuns:NewButton("[Glock Ammo] - ", "ButtonInfo", function()
+    end)
+
+    AutoBuyGuns:NewButton("[Silencer] - ", "ButtonInfo", function()
+    end)
+    AutoBuyGuns:NewButton("[Silencer Ammo] - ", "ButtonInfo", function()
+    end)
+
+    AutoBuyGuns:NewButton("[Tactical Shotgun] - ", "ButtonInfo", function()
+    end)
+    AutoBuyGuns:NewButton("[Tactical Shotgun Ammo] - ", "ButtonInfo", function()
+    end)
+
+    AutoBuyGuns:NewButton("[FlameThrower] - ", "ButtonInfo", function()
+    end)
+    AutoBuyGuns:NewButton("[FlameThrower Ammo] - ", "ButtonInfo", function()
+    end)
+
+    AutoBuyGuns:NewButton("[AR] - ", "ButtonInfo", function()
+    end)
+    AutoBuyGuns:NewButton("[AR Ammo] - ", "ButtonInfo", function()
+    end)
+
+    AutoBuyGuns:NewButton("[AUG] - ", "ButtonInfo", function()
+    end)
+    AutoBuyGuns:NewButton("[AUG Ammo] - ", "ButtonInfo", function()
+    end)
+
+    AutoBuyGuns:NewButton("[LMG] - ", "ButtonInfo", function()
+    end)
+    AutoBuyGuns:NewButton("[LMG Ammo] - ", "ButtonInfo", function()
+    end)
+
+    AutoBuyFood:NewButton("[Pizza] - ", "ButtonInfo", function()
+    end)
+    AutoBuyFood:NewButton("[Chicken] - ", "ButtonInfo", function()
+    end)
+    AutoBuyFood:NewButton("[Taco] - ", "ButtonInfo", function()
+    end)
+    AutoBuyFood:NewButton("[Burger] - ", "ButtonInfo", function()
+    end)
+    AutoBuyFood:NewButton("[Cranberry] - ", "ButtonInfo", function()
+    end)
+
+
+    
+    
+
+
+    PlayerSection:NewSlider("Walkspeed", "Changes the walkspeed", 250, 16, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end)
+
+    PlayerSection:NewSlider("Jumppower", "Changes the jumppower", 250, 50, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+
+
+    end)
+elseif game.PlaceId == 3956818381 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Ninja Legends", "Sentinel")
+
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+    MainSection:NewToggle("Auto Swing", "Make your player autoswing", function(v)
+        getgenv().autoswing = v
+        while true do
+            if not getgenv().autoswing then return end
+            for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if v:FindFirstChild("ninjitsuGain") then
+                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                    break
+                end
+            end
+            local A_1 = "swingKatana"
+            local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+            Event:FireServer(A_1)
+            wait(0.1)
+        end
+    end)
+
+    MainSection:NewToggle("Auto Sell", "Makes your player autosell", function(v)
+        getgenv().autosell = v
+        while true do
+            if getgenv().autoswing == false then return end
+            game:GetService("Workspace").sellAreaCircles["sellAreaCircle16"].circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            wait(0.1)
+            game:GetService("Workspace").sellAreaCircles["sellAreaCircle16"].circleInner.CFrame = CFrame.new(0,0,0)
+            wait(0.1)
+        end
+    end)
+
+    MainSection:NewButton("Unlock all islands", "Unlocks all islands", function()
+        local oldcframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        for _,v in pairs(game:GetService("Workspace").islandUnlockParts:GetChildren()) do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+            wait(0.1)
+        end
+        wait(0.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcframe
+    end)
+    
+    MainSection:NewToggle("Auto buy all swords", "Auto buys all swords", function(v)
+        getgenv().buyswords = v
+        while true do
+            if not getgenv().buyswords then return end
+            local A_1 = "buyAllSwords"
+            local A_2 = "Inner Peace Island"
+            local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+            Event:FireServer(A_1, A_2)
+            wait(0.5)
+        end
+    end)
+
+    MainSection:NewToggle("Auto buy all belts", "Auto buys all belts", function(v)
+        getgenv().buybelts = v
+        while true do
+            if not getgenv().buybelts then return end
+            local A_1 = "buyAllBelts"
+            local A_2 = "Inner Peace Island"
+            local Event = game:GetService("Players").LocalPlayer.ninjaEvent
+            Event:FireServer(A_1, A_2)
+            wait(0.5)
+        end
+    end)
+end
